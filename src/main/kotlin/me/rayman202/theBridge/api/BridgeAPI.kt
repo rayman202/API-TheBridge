@@ -34,7 +34,6 @@ interface IBridgeAPI {
 
     /**
      * Gets the persistent statistics for a player from the database.
-     * Note: This is an asynchronous operation and should be handled accordingly.
      *
      * @param playerUUID The UUID of the player.
      * @return A [PlayerStatsDTO] object, or `null` if the player has no recorded stats.
@@ -91,7 +90,6 @@ object BridgeAPI {
     @JvmStatic
     fun register(api: IBridgeAPI) {
         if (implementation != null) {
-            // Optional: You can add a warning here if someone tries to register the API twice.
             return
         }
         implementation = api
@@ -141,7 +139,7 @@ data class MapInfoDTO(
  */
 data class GameInfoDTO(
     val mapName: String,
-    val gameMode: String, // We use a String instead of the internal Enum
+    val gameMode: String, // Using a String keeps it independent from your plugin's internal enums
     val players: List<UUID>
 )
 
