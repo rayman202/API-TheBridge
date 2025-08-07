@@ -20,4 +20,8 @@ publishing {
             from(components["java"])
         }
     }
+    repositories {
+        mavenLocal() // ¡Esta es la línea que necesitas agregar!
+    }
 }
+
